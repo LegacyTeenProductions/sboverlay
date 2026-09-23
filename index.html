@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massive Webpage-Filling Square Scorebug Overlay</title>
+    <title>Massive Square Scorebug Overlay - HDMI Chroma Key</title>
     <style>
-        /* Base Viewport Canvas - Centers the massive box perfectly */
+        /* Base Viewport Canvas - Changed to pure Chroma Key Green for HDMI output */
         html, body {
-            background-color: transparent;
+            background-color: #00ff00; /* Pure green screen background */
             margin: 0; padding: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             font-weight: 800; color: #ffffff;
@@ -20,7 +20,7 @@
             justify-content: center;
         }
 
-        /* Massive Square Container Box - Locked to fill the max height of the webpage canvas */
+        /* Massive Square Container Box */
         .scorebug-container {
             display: flex;
             flex-direction: column; 
@@ -29,14 +29,14 @@
             box-shadow: 0 4vh 10vh rgba(0,0,0,0.8);
             
             /* Shaped as a massive square based on the screen's height */
-            width: 138vh; 
+            width: 90vh; 
             height: 90vh; 
             overflow: hidden;
             border: 1.5vh solid #1f2833;
             box-sizing: border-box;
         }
 
-        /* Team Row Element Layouts (Taller block spacing) */
+        /* Team Row Element Layouts */
         .team-row {
             display: flex;
             align-items: center;
@@ -44,11 +44,9 @@
             height: 27.5vh; 
             border-bottom: 1vh solid #2d323f;
         }
-
-
         .team-title {
-            padding: 0 4vh;
-            font-size: 11vh; /* Giant team font size */
+            padding: 0 6vh;
+            font-size: 11vh; 
             letter-spacing: 0.5vh;
             height: 100%;
             display: flex;
@@ -56,12 +54,12 @@
             flex-grow: 1;
             font-weight: 900;
         }
-        .away-team .team-title { background-color: #FFD700; } 
-        .home-team .team-title { background-color: #FF0000; } 
+        .away-team .team-title { background-color: #bd1f36; } 
+        .home-team .team-title { background-color: #1f4ebd; } 
         
         .score-val {
             background-color: #1f232b;
-            font-size: 14vh; /* Giant score number readout */
+            font-size: 14vh; 
             width: 28vh;
             height: 100%;
             display: flex;
@@ -70,7 +68,7 @@
             font-weight: 900;
         }
 
-        /* Bottom Game Stats Data Bar (Takes up remaining 35% of square height) */
+        /* Bottom Game Stats Data Bar */
         .status-row {
             display: flex;
             align-items: center;
@@ -114,24 +112,21 @@
 </head>
 <body>
 
-    <!-- Target Output Component Canvas Layer -->
     <div class="scorebug-container">
-        
-        <!-- Row 1: Away Team Segment -->
+        <!-- Away Team Segment -->
         <div class="team-row away-team">
             <div class="team-title" id="disp-away-name">AWY</div>
             <div class="score-val" id="disp-away-score">0</div>
         </div>
 
-        <!-- Row 2: Home Team Segment -->
+        <!-- Home Team Segment -->
         <div class="team-row home-team">
             <div class="team-title" id="disp-home-name">HOM</div>
             <div class="score-val" id="disp-home-score">0</div>
         </div>
 
-        <!-- Row 3: Status Tracking Base Bar -->
+        <!-- Status Tracking Base Bar -->
         <div class="status-row">
-            
             <!-- Inning display block -->
             <div class="data-segment">
                 <span class="arrow-indicator" id="disp-inning-arrow">&#9650;</span>
@@ -164,23 +159,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-<!-- Locate your team-row blocks and update them to look like this: -->
 
-<!-- Away Team Row -->
-<div class="team-row away-team">
-    <div class="team-title">
-        <!-- This line inserts your away logo right next to the text -->
-        <img src="away-logo.png" class="team-logo" alt="Away Logo">
-        <span id="disp-away-name">AWY</span>
-    </div>
-    <div class="score-val" id="disp-away-score">0</div>
-</div>
-
-
-    <!-- BACKEND ENGINE LOGIC CONFIGURATION -->
     <script>
         function pull() {
             const cache = localStorage.getItem('yolo_softball_engine');
